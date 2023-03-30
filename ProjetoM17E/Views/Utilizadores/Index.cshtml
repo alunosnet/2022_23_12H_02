@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProjetoM17E.Models.Utilizador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Utilizadores</h2>
+<br />
+
+<p>
+    @Html.ActionLink("Criar novo Utilizador", "Create")
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Perfil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @if (item.Perfil==1)
+            {
+                <span>Adminstrador</span>
+            }
+            else
+            {
+                <span>Cliente</span>
+            }
+        </td>
+        <td>
+            @if (item.Estado==0)
+            {
+                <span>Desativo</span>
+            }
+            else
+            {
+                <span>Ativo</span>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.UtilizadorId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.UtilizadorId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id = item.UtilizadorId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,67 @@
+﻿ @model ProjetoM17E.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+<br />
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+           @if ( Model.Tipo == 0)
+            {
+                <span>Saco</span>
+            }
+
+            else
+            {
+                <span>Caixa</span>
+            }
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fragil)
+        </dt>
+
+        <dd>
+           @if ( Model.Fragil == 0)
+            {
+                <span>Não</span>
+            }
+            else
+            {
+               <span>Sim</span>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ProdutoId }) |
+    @Html.ActionLink("Voltar para os produtos", "Index")
+</p>

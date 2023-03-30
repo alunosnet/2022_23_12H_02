@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjetoM17E.Models.Entrega>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Entregas</h2>
+<br />
+
+<p>
+    @Html.ActionLink("Anotar nova entrega", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.ProdutoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.utilizador.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_entrega)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.produto.ProdutoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.utilizador.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_entrega)
+        </td>
+        <td>
+            @Html.ActionLink("Detalhes", "Details", new { id=item.EntregaId }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.EntregaId })
+        </td>
+    </tr>
+}
+
+</table>

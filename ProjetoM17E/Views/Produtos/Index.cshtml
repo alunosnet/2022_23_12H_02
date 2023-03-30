@@ -1,0 +1,126 @@
+﻿@model IEnumerable<ProjetoM17E.Models.Produto>
+
+@{
+    ViewBag.Title = "Produtos";
+}
+
+<h2>Produtos</h2>
+
+<p>
+    @Html.ActionLink("Adicionar novo produto", "Create")
+</p>
+
+<br />
+<h3>Produtos Disponiveis</h3>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fragil)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(p => p.Estado==true))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @if (item.Tipo==0)
+                {
+                    <span>Saco</span>
+                }
+                else
+                {
+                    <span>Caixa</span>
+                }
+            </td>
+            <td>
+                @if (item.Fragil==0)
+                {
+                    <span>Nâo</span>
+                }
+                else
+                {
+                    <span>Sim</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.ProdutoId })
+            </td>
+        </tr>
+    }
+</table>
+
+
+<br />
+<h3>Produtos Enviados</h3>
+<br /> 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fragil)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(p => p.Estado==false))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @if (item.Tipo==0)
+                {
+                    <span>Saco</span>
+                }
+                else
+                {
+                    <span>Caixa</span>
+                }
+            </td>
+            <td>
+                @if (item.Fragil==0)
+                {
+                    <span>Nâo</span>
+                }
+                else
+                {
+                    <span>Sim</span>
+                }
+            </td>
+        </tr>
+    }
+
+
+
+</table>

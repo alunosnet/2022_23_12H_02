@@ -1,0 +1,48 @@
+﻿@model ProjetoM17E.Models.Entrega
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Remover</h2>
+
+<h3>Tem a certeza que quer remover esta entrega?</h3>
+<div>
+    <h4>Entrega</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.produto.ProdutoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produto.ProdutoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.utilizador.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utilizador.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_entrega)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para Entregas", "Index")
+        </div>
+    }
+</div>
