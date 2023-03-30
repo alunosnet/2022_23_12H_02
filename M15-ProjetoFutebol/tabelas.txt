@@ -1,0 +1,26 @@
+﻿
+
+create table jogadores(
+	njogador int identity primary key,
+	nome varchar(50) not null check (len(nome)>=4 and charindex(' ',nome)>0),
+	idade int not null check (idade >= 18),
+	fotografia varbinary(max),
+	estado bit default(0)
+);
+
+create table equipas(
+	nequipa int identity primary key,
+	nome varchar (20) check (len(nome)>=4,
+	campeonato varchar(50),
+	emblema varbinary(max)
+);
+
+create table contratos(
+	ncontrato int identity primary key,
+	njogador int references jogadores(njogador),
+	nequipa int references equipas(nequipa),
+	inicio_contrato date check (inicio_contrato <= getdate()),
+	fim_contrato date check (fim_contrato >= getdate()),
+	
+);
+
